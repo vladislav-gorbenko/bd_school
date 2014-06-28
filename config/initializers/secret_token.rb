@@ -9,4 +9,18 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-BdSchool::Application.config.secret_key_base = 'e8f89de077f668c6423f1b29667b17295e242bb21dcc1442db1bd09cdc7d94b7c821416724cc81574a4f2fc70b61ee2d0eb84c5e764236e27ba03792dc02eec7'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+BdSchool::Application.config.secret_key_base = secure_token
