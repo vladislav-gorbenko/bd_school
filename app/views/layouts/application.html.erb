@@ -36,10 +36,9 @@
                 <ul class="nav pull-right">
                   <li class="divider-vertical"></li>
                   <% if user_signed_in? %>
-                    <button type="button" class="btn btn-inverse" data-toggle="button">Logout</button>
-                    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-inverse' %>
                   <% else %>
-                    <button type="button" class="btn btn-inverse" data-toggle="button"><%= link_to "Login", new_user_session_path %></button>
+                    <%= link_to "Login", new_user_session_path, :class => 'btn btn-inverse' %>
                   <%end%>
                   <li class="divider-vertical"></li>
                   <div class="btn-group">
@@ -53,7 +52,7 @@
                         <li><a href="#">Separated link</a></li>
                       </ul>
                     <% else %>
-                     <button type="button" class="btn btn-inverse" data-toggle="button"><%= link_to "Sing up", new_user_registration_path %></button>
+                      <%= link_to "Sing up", new_user_registration_path, :class => 'btn btn-inverse' %>
                     <%end%>
                   </div>
                 </ul>
