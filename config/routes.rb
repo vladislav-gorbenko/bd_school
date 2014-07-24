@@ -1,6 +1,5 @@
 BdSchool::Application.routes.draw do
-  root :to => 'products#index'
+  root :to => 'users#index'
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
-  resources :products
-  
+  resources :products, :users
 end
