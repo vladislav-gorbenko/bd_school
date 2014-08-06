@@ -9,6 +9,9 @@
   </head>
 
 <body>
+  <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+  <% end -%>
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="span2">
