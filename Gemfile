@@ -19,6 +19,8 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'devise'
 gem "haml-rails"
+gem "simple_form"
+gem 'pry-debugger'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

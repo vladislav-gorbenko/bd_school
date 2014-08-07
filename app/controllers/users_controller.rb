@@ -17,17 +17,16 @@ class UsersController < ApplicationController
   end
 
   def create
+    # binding.pry
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      flash[:notice] = "User is created."
+      redirect_to action: 'index'
+    else
+      render action: 'new' 
     end
+
   end
 
   def update
@@ -59,6 +58,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:product).permit(:name, :price)
+      params.require(:user).permit(:name, :email)
     end
 end

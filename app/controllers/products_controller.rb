@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:index, :show]
+  # before_filter :authenticate_user!, except: [:index, :show]
 
   def index
     @products = Product.all
@@ -19,15 +19,11 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @product }
-        flash[:notice] = "You have successfully logged out."
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    if @product.save
+      flash[:notice] = "You have successfully logged out."
+      redirect_to action: 'index'
+    else
+      render action: 'new' 
     end
   end
 
