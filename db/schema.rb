@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140721085238) do
+ActiveRecord::Schema.define(version: 20140808171705) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -28,8 +28,25 @@ ActiveRecord::Schema.define(version: 20140721085238) do
     t.string   "city"
     t.datetime "date_invite"
     t.string   "description"
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "people", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "city"
+    t.string   "phone_number"
+    t.string   "role"
+    t.string   "status"
+    t.string   "group_name"
+    t.string   "birthday"
+    t.string   "description"
+    t.datetime "date_become_member"
+    t.datetime "date_left_membership"
+    t.datetime "last_invited_action"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,24 +60,17 @@ ActiveRecord::Schema.define(version: 20140721085238) do
 
   create_table "tegs", force: true do |t|
     t.string   "name"
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string   "password"
-    t.string   "role"
     t.string   "city"
     t.string   "name"
     t.string   "phone_number"
-    t.string   "group_name"
-    t.string   "status"
     t.string   "description"
-    t.datetime "date_become_member"
-    t.datetime "date_left_membership"
-    t.datetime "last_invited_action"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "birthday"

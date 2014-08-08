@@ -17,12 +17,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    # binding.pry
     @user = User.new(user_params)
 
     if @user.save
       flash[:notice] = "User is created."
-      redirect_to action: 'index'
+      render action: 'show'
     else
       render action: 'new' 
     end
