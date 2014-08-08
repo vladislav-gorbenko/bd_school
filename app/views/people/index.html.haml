@@ -1,0 +1,38 @@
+= render :partial => 'shared/people'
+.span10
+  .hero-unit
+    %ul.breadcrumb
+      %li
+        %a{:href => "#"} People!
+        %span.divider /
+    %div
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Select
+            %th Person
+            %th Email
+            %th Phone number
+            %th Actions
+        %tbody
+          - @people.each do |person|
+            %tr
+              %td
+              %td= person.name
+              %td= person.email
+              %td= person.phone_number
+              %td
+                = link_to t('.edit', :default => t("helpers.links.edit")), edit_person_path(person), :class => 'btn btn-mini'
+                = link_to t('.destroy', :default => t("helpers.links.destroy")), person_path(person), :method => :delete, |
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+      = link_to t('.new', :default => t("helpers.links.new")), new_person_path, :class => 'btn btn-primary'
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+!!!
+%html
+  %head
+    %title BdSchool
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .container-fluid
+      .row-fluid
+        .span2
+          %a.puzzle_logo{:href => "/"}
+            %img{:alt => "Logo", :src => "/assets/01.png"}
+        .span10
+          .masthead
+            .puzzle_logo
+              %img{:alt => "Logo", :src => "/assets/02.jpg"}
+            .navbar
+              .navbar-inner
+                .container
+                  %ul.nav
+                    %li
+                      %a{:href => "/people"} People
+                    %li.divider-vertical
+                    %li
+                      %a{:href => "/events"} Events
+                    %li.divider-vertical
+                    %li
+                      %a{:href => "/invites"} Invites
+                    %li.divider-vertical
+                  %ul.nav.pull-right
+                    %li.divider-vertical
+                    - if user_signed_in?
+                      = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-inverse'
+                    - else
+                      = link_to "Login", new_user_session_path, :class => 'btn btn-inverse'
+                    %li.divider-vertical
+                    .btn-group
+                      - if user_signed_in?
+                        %button.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+                          = current_user.name
+                          %span.caret
+                        %ul.dropdown-menu
+                          %li
+                            %a{:href => "#"} Action
+                          %li
+                            %a{:href => "#"} Another action
+                          %li
+                            %a{:href => "#"} Something else here
+                          %li.divider
+                          %li
+                            %a{:href => "#"} Separated link
+                      - else
+                        = link_to "Sing up", new_user_registration_path, :class => 'btn btn-inverse'
+                  %form.navbar-search.pull-right
+                    %input.search-query{:placeholder => "Search", :type => "text"}
+            / /.navbar
+    .container-fluid
+      - flash.each do |name, msg|
+        %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+          %a.close{"data-dismiss" => "alert"} ×
+          = msg
+      .row-fluid
+        = yield
+      %hr
+        %footer
+          %p © Company 2014

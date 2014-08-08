@@ -1,0 +1,45 @@
+.span2
+  .well.sidebar-nav
+    %ul.nav.nav-list
+      %li.nav-header People
+      %li
+        %a{:href => "#"} new person
+      %li
+        %a{:href => "#"} new group
+      %li
+        %a{:href => "#"} groups
+      %li.divider
+      .btn-group-vertical
+        = link_to "create list", destroy_user_session_path, method: :delete, :class => 'btn btn-inverse'
+        = link_to "create list for journal", destroy_user_session_path, method: :delete, :class => 'btn btn-inverse'
+        = link_to "add to invite", destroy_user_session_path, method: :delete, :class => 'btn btn-inverse'
+        = link_to "last invite ivent", destroy_user_session_path, method: :delete, :class => 'btn btn-inverse'
+        = link_to "become member", destroy_user_session_path, method: :delete, :class => 'btn btn-inverse'
+        = link_to "left membership", destroy_user_session_path, method: :delete, :class => 'btn btn-inverse'
+        = link_to "chenge status", destroy_user_session_path, method: :delete, :class => 'btn btn-inverse'
+.span10
+  .hero-unit
+    %ul.breadcrumb
+      %li
+        %a{:href => "#"} People!
+        %span.divider /
+    %div
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Select
+            %th Person
+            %th Email
+            %th Phone number
+            %th Actions
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td
+              %td= user.name
+              %td= user.email
+              %td= user.phone_number
+              %td
+                = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_path(user), :class => 'btn btn-mini'
+                = link_to t('.destroy', :default => t("helpers.links.destroy")),user_path(user), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+      = link_to t('.new', :default => t("helpers.links.new")), new_user_path, :class => 'btn btn-primary'
