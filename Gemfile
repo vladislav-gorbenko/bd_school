@@ -20,7 +20,8 @@ gem 'jbuilder', '1.0.2'
 gem 'devise'
 gem "haml-rails"
 gem "simple_form"
-gem 'pry-debugger'
+gem 'jazz_hands'
+gem 'better_errors'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
