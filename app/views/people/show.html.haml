@@ -1,6 +1,7 @@
-%p#notice= notice
+= render layout: 'shared/people' do |f|
+  %p#notice= notice
 
 
-= link_to 'Edit', edit_person_path(@person)
-\|
-= link_to 'Back', people_path
+  = link_to 'Edit', edit_person_path(@person)
+  \|
+  = link_to 'Back', people_path
