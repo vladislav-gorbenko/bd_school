@@ -18,6 +18,7 @@ BdSchool::Application.configure do
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
+  BetterErrors::Middleware.allow_ip! '192.168.113.1'
 
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
