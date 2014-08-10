@@ -2,6 +2,7 @@ class Person < ActiveRecord::Base
   has_many :invites
   has_many :tegs
   has_many :events, :through => :invites
+  has_and_belongs_to_many :groups
 
   validates :name, :presence => true #:role, :city, :presence => true
   # validates :name, :email, uniqueness: true, :allow_blank => true
