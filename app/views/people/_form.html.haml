@@ -7,11 +7,11 @@
   = f.input :role, collection: [:probationer, :friend_school, :member], as: :radio_buttons 
   = f.input :status, collection: [:free, :buzy], as: :radio_buttons
   = f.association :groups, as: :check_boxes 
-  = f.input :birthday, as: :date
+  = f.input :birthday, as: :date, start_year: Date.today.year - 15,  end_year: Date.today.year - 70, :order => [ :day, :month, :year]
   = f.input :description
-  = f.input :date_become_member, as: :date
-  = f.input :date_left_membership, as: :date
-  = f.input :last_invited_action, as: :date
+  = f.input :date_become_member, :as => :date, :start_year => Date.today.year, :end_year => 1991, :order => [ :day, :month, :year], :required => false
+  = f.input :last_invited_action, :as => :date, :start_year => Date.today.year, :end_year => 2014, :order => [ :day, :month, :year], :required => false 
+  = f.input :date_left_membership, as: :date, :start_year => Date.today.year, :end_year => 2014, :order => [ :day, :month, :year], :required => false 
 
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'

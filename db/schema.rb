@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810141651) do
+ActiveRecord::Schema.define(version: 20140811150425) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140810141651) do
     t.string   "role"
     t.string   "status"
     t.string   "group_name"
-    t.string   "birthday"
+    t.datetime "birthday"
     t.string   "description"
     t.datetime "date_become_member"
     t.datetime "date_left_membership"
