@@ -1,0 +1,8 @@
+= render layout: 'shared/root' do |f|
+  .imgCenter
+    - if current_user.city == "Kharkov"
+      = render :partial => 'shared/kharkov'
+    - elsif current_user.city == "Kiev"
+      = render :partial => 'shared/kiev'
+    - elsif current_user.city == "Dnepr"
+      = render :partial => 'shared/dnepr'

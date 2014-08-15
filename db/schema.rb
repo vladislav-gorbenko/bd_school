@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811150425) do
+ActiveRecord::Schema.define(version: 20140815135625) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -70,6 +70,11 @@ ActiveRecord::Schema.define(version: 20140811150425) do
   create_table "products", force: true do |t|
     t.string   "name"
     t.decimal  "price",      precision: 10, scale: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "static_pages", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
