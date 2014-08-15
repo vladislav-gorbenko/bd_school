@@ -11,3 +11,12 @@
  *= require_self
  *= require_tree .
  */
+#restoration {
+/*  position: relative;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(0,0,0,0.02);
+  padding: 1em;*/
+  width: 400px;
+  height: 400px;
+  padding-left: 800px;
+}

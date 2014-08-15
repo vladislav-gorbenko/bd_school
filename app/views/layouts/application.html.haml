@@ -18,18 +18,18 @@
             .navbar
               .navbar-inner
                 .container
-                  %ul.nav
-                    %li
-                      %a{:href => "/people"} People
-                    %li.divider-vertical
-                    %li
-                      %a{:href => "/events"} Events
-                    %li.divider-vertical
-                    %li
-                      %a{:href => "/invites"} Invites
-                    %li.divider-vertical
+                  - if !current_user.nil?
+                    %ul.nav
+                      %li
+                        %a{:href => "/people"} People
+                      %li.divider-vertical
+                      %li
+                        %a{:href => "/events"} Events
+                      %li.divider-vertical
+                      %li
+                        %a{:href => "/invites"} Invites
+                      %li.divider-vertical
                   %ul.nav.pull-right
-                    %li.divider-vertical
                     - if user_signed_in?
                       = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-inverse'
                     - else
@@ -52,8 +52,9 @@
                             %a{:href => "#"} Separated link
                       - else
                         = link_to "Sing up", new_user_registration_path, :class => 'btn btn-inverse'
-                  %form.navbar-search.pull-right
-                    %input.search-query{:placeholder => "Search", :type => "text"}
+                  - if !current_user.nil?      
+                    %form.navbar-search.pull-right
+                      %input.search-query{:placeholder => "Search", :type => "text"}
             / /.navbar
     .container-fluid
       - flash.each do |name, msg|
