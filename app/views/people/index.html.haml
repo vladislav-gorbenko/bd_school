@@ -1,25 +1,27 @@
 = render layout: 'shared/people' do |f|
   %div
-    %table.table.table-striped
-      %thead
-        %tr
-          %th Select
-          %th Person
-          %th Email
-          %th Phone number
-          %th Actions
-      %tbody
-        - @people.each do |person|
+    = form_tag become_member_people_path, :method => :post do
+      %table.table.table-striped
+        %thead
           %tr
-            %td
-            %td= person.name
-            %td= person.email
-            %td= person.phone_number
-            %td
-              = link_to t('.edit', :default => t("helpers.links.edit")), edit_person_path(person), :class => 'btn btn-mini'
-              = link_to t('.destroy', :default => t("helpers.links.destroy")), person_path(person), :method => :delete, |
-                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-    = link_to t('.new', :default => t("helpers.links.new")), new_person_path, :class => 'btn btn-primary'
+            %th Select
+            %th Person
+            %th Email
+            %th Phone number
+            %th Actions
+        %tbody#clic2
+          - @people.each do |person|
+            %tr
+              %td= check_box_tag "person_ids[]", person.id
+              %td= person.name
+              %td= person.email
+              %td= person.phone_number
+              %td
+                = link_to t('.edit', :default => t("helpers.links.edit")), edit_person_path(person), :class => 'btn btn-mini'
+                = link_to t('.destroy', :default => t("helpers.links.destroy")), person_path(person), :method => :delete, |
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+      = submit_tag "Become member", :class => 'btn btn-primary', :id => 'clic' #, :style => "display:none"
+      / $('#clic').show();
 
 
 
