@@ -1,7 +1,7 @@
 $(document).ready ->
-  $("#clic").hide() #Initially form wil be hidden.
+  $(".clic").hide() #Initially form wil be hidden.
   $("#clic2").click ->
-    $("#clic").show() #Form shows on button click
+    $(".clic").show() #Form shows on button click
     return
 
   return

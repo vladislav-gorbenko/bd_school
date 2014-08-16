@@ -2,7 +2,7 @@ BdSchool::Application.routes.draw do
 
   resources :people do
     collection do
-      post 'become_member'
+      post 'actions'
     end
   end
 

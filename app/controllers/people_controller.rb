@@ -50,9 +50,19 @@ class PeopleController < ApplicationController
     end
   end
 
-  def become_member
-    @people = Person.find(params[:person_ids])
-    @people.each {|i| i.role = "member"; i.save}
+  def actions
+    action = params[:commit]
+    if action == "Become member"
+      @people = Person.find(params[:person_ids])
+      @people.each {|i| i.role = "member"; i.save} 
+    elsif action == "Become probationer"
+      @people = Person.find(params[:person_ids])
+      @people.each {|i| i.role = "probationer"; i.save} 
+    elsif action == "Become volontier"
+      @people = Person.find(params[:person_ids])
+      @people.each {|i| i.role = "volontier"; i.save} 
+    end
+  
     render 'index'
   end
 
