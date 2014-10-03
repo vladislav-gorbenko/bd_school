@@ -1,6 +1,6 @@
-class PeopleController < ApplicationController
-  # before_action :set_person, only: [:show, :edit, :update, :destroy]
+class PeopleController < ApplicationController  
   before_filter :authenticate_user!
+  before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   def index
     @people = Person.all
@@ -62,8 +62,7 @@ class PeopleController < ApplicationController
       @people = Person.find(params[:person_ids])
       @people.each {|i| i.role = "volontier"; i.save} 
     end
-  
-    render 'index'
+    redirect_to action: 'index'
   end
 
 

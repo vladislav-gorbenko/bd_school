@@ -20,11 +20,10 @@
                 = link_to t('.edit', :default => t("helpers.links.edit")), edit_person_path(person), :class => 'btn btn-mini'
                 = link_to t('.destroy', :default => t("helpers.links.destroy")), person_path(person), :method => :delete, |
                   :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-      .clic
-        = submit_tag "Become member", :class => 'btn btn-primary' #, :style => "display:none"
+      .clic{:style => "display:none"}
+        = submit_tag "Become member", :class => 'btn btn-primary'
         = submit_tag "Become probationer", :class => 'btn btn-primary'
         = submit_tag "Become volontier", :class => 'btn btn-primary'
-      / $('#clic').show();
 
 
 

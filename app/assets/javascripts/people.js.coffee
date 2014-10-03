@@ -1,21 +1,13 @@
 $(document).ready ->
-  $(".clic").hide() #Initially form wil be hidden.
-  $("#clic2").click ->
-    $(".clic").show() #Form shows on button click
+  $(":checkbox").click ->
+    chboxs = $(":checkbox")
+    vis = "none"
+    i = 0
+    while i < chboxs.length
+      if chboxs[i].checked
+        vis = "block"
+        break
+      i++
+    $(".clic")[0].style.display = vis
     return
-
   return
-
-# $(document).ready ->
-#   $("#clic").hide() #Initially form wil be hidden.
-#   $("#clic2").click ->
-#     debugger
-#     if $(this).is(":checked")
-#       $("#clic").show()
-#     else
-#       $("#clic").hide()
-#     return
-
-#   return
-
-# $('#person_ids_')[0].checked
