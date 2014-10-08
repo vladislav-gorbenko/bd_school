@@ -51,23 +51,57 @@ class PeopleController < ApplicationController
   end
 
   def actions
-    action = params[:commit]
-    if action == "Become member"
-      @people = Person.find(params[:person_ids])
-      @people.each {|i| i.role = "member"; i.save} 
-    elsif action == "Become probationer"
-      @people = Person.find(params[:person_ids])
-      @people.each {|i| i.role = "probationer"; i.save} 
-    elsif action == "Become volontier"
-      @people = Person.find(params[:person_ids])
-      @people.each {|i| i.role = "volontier"; i.save} 
+    if params.has_key?("status")
+      actions_status
+    elsif  params.has_key?("list_for")
+      actions_list_for
+    elsif  params.has_key?("add_to")
+      actions_add_to
+    elsif  params.has_key?("become")
+      actions_become
+    elsif  params.has_key?("options")
+      actions_options
     end
-    redirect_to action: 'index'
   end
 
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def actions_status
+      flash[:error] = "This method is absent"
+      redirect_to action: 'index'
+    end
+
+    def actions_list_for
+      flash[:error] = "This method is absent"
+      redirect_to action: 'index'
+    end
+
+    def actions_add_to
+      flash[:error] = "This method is absent"
+      redirect_to action: 'index'
+    end
+
+    def actions_become
+      action = params["become"]
+      if action == "become member"
+        @people = Person.find(params[:person_ids])
+        @people.each {|i| i.role = "member"; i.save} 
+      elsif action == "become probationer"
+        @people = Person.find(params[:person_ids])
+        @people.each {|i| i.role = "probationer"; i.save} 
+      elsif action == "become volontier"
+        @people = Person.find(params[:person_ids])
+        @people.each {|i| i.role = "volontier"; i.save} 
+      end
+      redirect_to action: 'index'
+    end
+
+    def actions_options
+      flash[:error] = "This method is absent"
+      redirect_to action: 'index'
+    end
+
     def set_person
       @person = Person.find(params[:id])
     end

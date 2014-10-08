@@ -21,13 +21,20 @@
                 = link_to t('.destroy', :default => t("helpers.links.destroy")), person_path(person), :method => :delete, |
                   :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
       .clic{:style => "display:none"}
-        = submit_tag "Become member", :class => 'btn btn-primary'
-        = submit_tag "Become probationer", :class => 'btn btn-primary'
-        = submit_tag "Become volontier", :class => 'btn btn-primary'
-
-
-
-
+        = submit_tag "create list", :class => 'btn btn-lg btn-success', 'data-disable-with' => "Please wait..", :name => "list_for"
+        = submit_tag "create list for journal group", :class => 'btn btn-lg btn-success', 'data-disable-with' => "Please wait..", :name => "list_for"
+        |
+        = submit_tag "add to group", :class => 'btn btn-lg btn-warning', 'data-disable-with' => "Please wait..", :name => "add_to"
+        = submit_tag "add to invite", :class => 'btn btn-lg btn-warning', 'data-disable-with' => "Please wait..", :name => "add_to"
+        |
+        = submit_tag "become member", :class => 'btn btn-primary', 'data-disable-with' => "Please wait..", :name => "become"
+        = submit_tag "become probationer", :class => 'btn btn-primary', 'data-disable-with' => "Please wait..", :name => "become"
+        = submit_tag "become volontier", :class => 'btn btn-primary', 'data-disable-with' => "Please wait..", :name => "become"
+        |
+        = submit_tag "last invited ivent", :class => 'btn btn-lg btn-info', 'data-disable-with' => "Please wait..", :name => "options"
+        = submit_tag "left membership", :class => 'btn btn-lg btn-info', 'data-disable-with' => "Please wait..", :name => "options"
+        |
+        = submit_tag "change status", :class => 'btn btn-lg btn-default', 'data-disable-with' => "Please wait..", :name => "status"
 
 
 
